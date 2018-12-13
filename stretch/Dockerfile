@@ -2,6 +2,13 @@ FROM golang:1.11.2-stretch
 
 ENV LIBRDKAFKA_VERSION=0.11.6
 
+RUN apt-get update && apt-get install -y \
+    zlib1g-dev \
+    libssl-dev \
+    libsasl2-dev \
+    libzstd-dev \
+&& rm -rf /var/lib/apt/lists/*
+
 RUN mkdir -p /root/librdkafka
 WORKDIR /root/librdkafka
 
